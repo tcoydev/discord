@@ -1,0 +1,637 @@
+/**
+ * @name Valorant
+ * @description Valorant-inspired theme: dark navy, signature red, cut corners and tactical HUD details.
+ * @author tcoy
+ * @version 1.0.0
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap");
+
+/* ============================================================
+   1. SETTINGS — change colors, fonts and background here
+   ============================================================ */
+:root {
+  --val-bg:          #0f1923; /* main navy background */
+  --val-bg-alt:      #111d28;
+  --val-bg-deep:     #0a121a;
+  --val-surface:     #1b2733;
+  --val-surface-2:   #22303d;
+  --val-surface-3:   #2c3b49;
+  --val-border:      #364554;
+  --val-border-dim:  #1f2c38;
+
+  --val-text:        #ece8e1; /* Valorant off-white */
+  --val-text-strong: #ffffff;
+  --val-text-dim:    #a6aeb5;
+  --val-text-faint:  #6c7782;
+
+  --val-red:         #ff4655; /* signature red */
+  --val-red-hover:   #e83f4d;
+  --val-red-active:  #c93541;
+  --val-red-hsl:     355 100% 63.7%;
+  --val-red-dim:     rgba(255, 70, 85, 0.12);
+  --val-red-dim2:    rgba(255, 70, 85, 0.24);
+
+  --val-teal:        #17e6b5; /* ally / online */
+  --val-yellow:      #f5d547; /* spike / idle */
+  --val-blue:        #5cb8ff;
+  --val-purple:      #b98cff;
+
+  --val-font:         "Barlow", "DIN Next", "Segoe UI", sans-serif;
+  --val-font-display: "Bebas Neue", "Tungsten", "Oswald", "Impact", sans-serif;
+  --val-font-code:    "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+
+  --val-cut: 10px; /* size of the cut corners */
+
+  /* optional: put an image URL here, e.g. url("https://.../jett.jpg") */
+  --val-bg-image: none;
+  --val-bg-image-opacity: 0.12;
+}
+
+/* ============================================================
+   2. DISCORD VARIABLES (legacy + visual refresh)
+   ============================================================ */
+:root,
+.theme-dark,
+.theme-darker,
+.theme-midnight,
+.theme-light,
+.visual-refresh {
+  /* fonts */
+  --font-primary: var(--val-font) !important;
+  --font-display: var(--val-font) !important;
+  --font-headline: var(--val-font-display) !important;
+  --font-code: var(--val-font-code) !important;
+
+  /* backgrounds (legacy) */
+  --background-primary: var(--val-bg) !important;
+  --background-secondary: var(--val-bg-alt) !important;
+  --background-secondary-alt: var(--val-surface) !important;
+  --background-tertiary: var(--val-bg-deep) !important;
+  --background-accent: var(--val-surface-3) !important;
+  --background-floating: var(--val-surface) !important;
+  --background-nested-floating: var(--val-surface-2) !important;
+  --background-mobile-primary: var(--val-bg) !important;
+  --background-mobile-secondary: var(--val-bg-alt) !important;
+  --background-modifier-hover: rgba(236, 232, 225, 0.04) !important;
+  --background-modifier-active: rgba(236, 232, 225, 0.07) !important;
+  --background-modifier-selected: var(--val-red-dim) !important;
+  --background-modifier-accent: var(--val-border-dim) !important;
+  --background-message-hover: rgba(236, 232, 225, 0.025) !important;
+  --background-mentioned: rgba(255, 70, 85, 0.08) !important;
+  --background-mentioned-hover: rgba(255, 70, 85, 0.12) !important;
+  --channeltextarea-background: var(--val-bg-alt) !important;
+  --deprecated-card-bg: var(--val-surface) !important;
+  --deprecated-card-editable-bg: var(--val-surface) !important;
+  --home-background: var(--val-bg) !important;
+  --modal-background: var(--val-surface) !important;
+  --modal-footer-background: var(--val-bg-alt) !important;
+  --input-background: var(--val-bg-deep) !important;
+
+  /* backgrounds (visual refresh) */
+  --app-frame-background: var(--val-bg-deep) !important;
+  --app-frame-border: var(--val-border-dim) !important;
+  --background-base-low: var(--val-bg-alt) !important;
+  --background-base-lower: var(--val-bg) !important;
+  --background-base-lowest: var(--val-bg-deep) !important;
+  --background-surface-high: var(--val-surface) !important;
+  --background-surface-higher: var(--val-surface-2) !important;
+  --background-surface-highest: var(--val-surface-3) !important;
+  --background-mod-subtle: rgba(236, 232, 225, 0.04) !important;
+  --background-mod-normal: rgba(236, 232, 225, 0.07) !important;
+  --background-mod-strong: rgba(236, 232, 225, 0.1) !important;
+  --background-mod-muted: rgba(236, 232, 225, 0.03) !important;
+  --chat-background-default: var(--val-bg) !important;
+  --bg-base-primary: var(--val-bg) !important;
+  --bg-base-secondary: var(--val-bg-alt) !important;
+  --bg-base-tertiary: var(--val-bg-deep) !important;
+  --bg-surface-raised: var(--val-surface) !important;
+  --bg-surface-overlay: var(--val-surface) !important;
+  --card-background-default: var(--val-surface) !important;
+  --input-background-default: var(--val-bg-deep) !important;
+  --message-background-hover: rgba(236, 232, 225, 0.025) !important;
+  --message-highlight-background-default: rgba(255, 70, 85, 0.08) !important;
+  --message-highlight-background-hover: rgba(255, 70, 85, 0.12) !important;
+
+  /* borders */
+  --border-faint: var(--val-border-dim) !important;
+  --border-subtle: var(--val-border-dim) !important;
+  --border-normal: var(--val-border) !important;
+  --border-strong: var(--val-text-faint) !important;
+  --input-border-default: var(--val-border) !important;
+
+  /* text */
+  --text-normal: var(--val-text) !important;
+  --text-default: var(--val-text) !important;
+  --text-strong: var(--val-text-strong) !important;
+  --text-subtle: var(--val-text-dim) !important;
+  --text-muted: var(--val-text-faint) !important;
+  --text-link: var(--val-red) !important;
+  --text-brand: var(--val-red) !important;
+  --text-positive: var(--val-teal) !important;
+  --text-danger: var(--val-red) !important;
+  --text-warning: var(--val-yellow) !important;
+  --text-feedback-positive: var(--val-teal) !important;
+  --text-feedback-critical: var(--val-red) !important;
+  --text-feedback-warning: var(--val-yellow) !important;
+  --header-primary: var(--val-text-strong) !important;
+  --header-secondary: var(--val-text-dim) !important;
+  --chat-text-muted: var(--val-text-faint) !important;
+  --channels-default: var(--val-text-dim) !important;
+  --channel-icon: var(--val-text-faint) !important;
+
+  /* icons / interactive */
+  --interactive-normal: var(--val-text-dim) !important;
+  --interactive-hover: var(--val-text) !important;
+  --interactive-active: var(--val-text-strong) !important;
+  --interactive-muted: var(--val-text-faint) !important;
+  --icon-default: var(--val-text-dim) !important;
+  --icon-subtle: var(--val-text-faint) !important;
+  --icon-muted: var(--val-text-faint) !important;
+  --icon-strong: var(--val-text-strong) !important;
+
+  /* brand color → Valorant red */
+  --brand-experiment: var(--val-red) !important;
+  --brand-experiment-500: var(--val-red) !important;
+  --brand-experiment-560: var(--val-red-hover) !important;
+  --brand-experiment-600: var(--val-red-active) !important;
+  --brand-500: var(--val-red) !important;
+  --brand-560: var(--val-red-hover) !important;
+  --brand-600: var(--val-red-active) !important;
+  --brand-500-hsl: var(--val-red-hsl) !important;
+  --brand-experiment-hsl: var(--val-red-hsl) !important;
+  --control-brand-foreground: var(--val-red) !important;
+  --control-brand-foreground-new: var(--val-red) !important;
+  --button-filled-brand-background: var(--val-red) !important;
+  --button-filled-brand-background-hover: var(--val-red-hover) !important;
+  --button-filled-brand-background-active: var(--val-red-active) !important;
+  --button-filled-brand-text: var(--val-text-strong) !important;
+  --redesign-button-primary-background: var(--val-red) !important;
+  --redesign-button-primary-hover-background: var(--val-red-hover) !important;
+  --redesign-button-primary-pressed-background: var(--val-red-active) !important;
+  --redesign-button-primary-text: var(--val-text-strong) !important;
+
+  /* mention */
+  --mention-foreground: var(--val-red) !important;
+  --mention-background: var(--val-red-dim) !important;
+  --info-warning-foreground: var(--val-yellow) !important;
+
+  /* menus */
+  --menu-item-default-hover-bg: var(--val-red) !important;
+  --menu-item-default-active-bg: var(--val-red-active) !important;
+
+  /* status colors */
+  --status-positive: var(--val-teal) !important;
+  --status-positive-background: var(--val-teal) !important;
+  --status-danger: var(--val-red) !important;
+  --status-danger-background: var(--val-red) !important;
+  --status-warning: var(--val-yellow) !important;
+  --status-warning-background: var(--val-yellow) !important;
+  --status-online: var(--val-teal) !important;
+  --status-idle: var(--val-yellow) !important;
+  --status-dnd: var(--val-red) !important;
+  --status-offline: var(--val-text-faint) !important;
+
+  /* scrollbar */
+  --scrollbar-thin-thumb: var(--val-border) !important;
+  --scrollbar-thin-track: transparent !important;
+  --scrollbar-auto-thumb: var(--val-border) !important;
+  --scrollbar-auto-track: transparent !important;
+  --scrollbar-auto-scrollbar-color-thumb: var(--val-border) !important;
+  --scrollbar-auto-scrollbar-color-track: transparent !important;
+}
+
+/* ============================================================
+   3. GENERAL
+   ============================================================ */
+body,
+button,
+input,
+textarea,
+select,
+[class*="markup_"] {
+  font-family: var(--val-font) !important;
+}
+
+::selection {
+  background: var(--val-red);
+  color: var(--val-text-strong);
+}
+
+/* thin tactical lines between panels */
+[class*="sidebar_"] {
+  border-right: 1px solid var(--val-border-dim);
+}
+section[class*="panels_"] {
+  border-top: 2px solid var(--val-red);
+  background: var(--val-bg-deep) !important;
+}
+
+/* chat background: faint diagonal stripes + red glow in the corner (+ optional image) */
+main[class*="chatContent_"] {
+  position: relative;
+  isolation: isolate;
+}
+main[class*="chatContent_"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(255, 70, 85, 0.09), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(236, 232, 225, 0.012) 0 2px, transparent 2px 14px);
+}
+main[class*="chatContent_"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: var(--val-bg-image) center / cover no-repeat;
+  opacity: var(--val-bg-image-opacity);
+}
+
+/* status dots (hardcoded colors in SVGs) */
+[fill="#23a55a"], [fill="#23A55A"] { fill: var(--val-teal) !important; }
+[fill="#f0b232"], [fill="#F0B232"] { fill: var(--val-yellow) !important; }
+[fill="#f23f43"], [fill="#F23F43"] { fill: var(--val-red) !important; }
+[fill="#80848e"], [fill="#80848E"] { fill: var(--val-text-faint) !important; }
+
+/* ============================================================
+   4. SERVER HEADER  →  big uppercase display title with red tick
+   ============================================================ */
+[class*="sidebar_"] header [class*="name_"] {
+  font-family: var(--val-font-display) !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--val-text-strong) !important;
+}
+[class*="sidebar_"] header [class*="name_"]::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 0.8em;
+  margin-right: 8px;
+  background: var(--val-red);
+  vertical-align: 0.02em;
+}
+
+/* ============================================================
+   5. CHANNEL HEADER  →  "// GENERAL"
+   ============================================================ */
+section[class*="title_"] [class*="children_"] > [class*="iconWrapper_"]:first-child {
+  display: none;
+}
+section[class*="title_"] [class*="titleWrapper_"] h1 {
+  font-family: var(--val-font-display) !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+section[class*="title_"] [class*="titleWrapper_"] h1::before {
+  content: "// ";
+  color: var(--val-red);
+}
+
+/* ============================================================
+   6. CHANNEL LIST  →  red bar + fade on the selected channel
+   ============================================================ */
+[class*="containerDefault_"] [class*="link_"] {
+  border-radius: 0 !important;
+}
+[class*="containerDefault_"] [class*="modeSelected_"] [class*="link_"] {
+  background: linear-gradient(90deg, var(--val-red-dim2), transparent 90%) !important;
+  box-shadow: inset 3px 0 0 var(--val-red);
+}
+[class*="containerDefault_"] [class*="modeSelected_"] [class*="name_"] {
+  color: var(--val-text-strong) !important;
+  font-weight: 600;
+}
+
+/* category names → tactical labels */
+[class*="containerDefault_"] [class*="mainContent_"] h3,
+[class*="containerDefault_"] [class*="name_"][class*="overflow"] {
+  font-family: var(--val-font-display) !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.12em;
+}
+
+/* member list section headers */
+[class*="membersGroup_"] {
+  font-family: var(--val-font-display) !important;
+  font-size: 15px !important;
+  letter-spacing: 0.12em;
+  color: var(--val-text-dim) !important;
+}
+
+/* ============================================================
+   7. MESSAGES
+   ============================================================ */
+[class*="headerText_"] [class*="username_"] {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+[class*="timestamp_"] {
+  color: var(--val-text-faint) !important;
+  font-family: var(--val-font-code) !important;
+  font-size: 10px !important;
+  text-transform: uppercase;
+}
+
+/* mentioned message: red bar on the left */
+[class*="mentioned_"] {
+  background: linear-gradient(90deg, rgba(255, 70, 85, 0.12), rgba(255, 70, 85, 0.03)) !important;
+}
+[class*="mentioned_"]::before {
+  background: var(--val-red) !important;
+  width: 3px !important;
+}
+
+/* @mention */
+.mention,
+[class*="mention"][class*="wrapper_"] {
+  background: var(--val-red-dim) !important;
+  color: var(--val-red) !important;
+  border-radius: 0 !important;
+  font-weight: 600;
+}
+.mention:hover,
+[class*="mention"][class*="wrapper_"]:hover {
+  background: var(--val-red) !important;
+  color: var(--val-text-strong) !important;
+}
+
+/* reply spine */
+[class*="repliedMessage_"]::before {
+  border-color: var(--val-border) !important;
+}
+
+/* blockquote */
+[class*="blockquoteDivider_"] {
+  background: var(--val-red) !important;
+}
+
+/* markdown headings */
+[class*="markup_"] h1,
+[class*="markup_"] h2,
+[class*="markup_"] h3 {
+  font-family: var(--val-font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--val-text-strong);
+}
+[class*="markup_"] h1 { font-size: 2em !important; }
+[class*="markup_"] h2 { font-size: 1.6em !important; }
+[class*="markup_"] h3 { font-size: 1.3em !important; }
+[class*="markup_"] h1::before,
+[class*="markup_"] h2::before,
+[class*="markup_"] h3::before {
+  content: "";
+  display: inline-block;
+  width: 0.25em;
+  height: 0.75em;
+  margin-right: 0.3em;
+  background: var(--val-red);
+}
+
+/* links */
+[class*="markup_"] a {
+  color: var(--val-red) !important;
+}
+
+/* ============================================================
+   8. CODE
+   ============================================================ */
+[class*="markup_"] code.inline {
+  background: var(--val-bg-deep) !important;
+  color: var(--val-yellow) !important;
+  border: 1px solid var(--val-border-dim);
+  border-radius: 0;
+  padding: 0.1em 0.35em;
+  font-family: var(--val-font-code) !important;
+}
+
+[class*="markup_"] pre {
+  border: 1px solid var(--val-border) !important;
+  border-left: 3px solid var(--val-red) !important;
+  border-radius: 0 !important;
+  background: var(--val-bg-deep) !important;
+}
+[class*="markup_"] pre code,
+code.hljs {
+  background: var(--val-bg-deep) !important;
+  border: none !important;
+  color: var(--val-text) !important;
+  font-family: var(--val-font-code) !important;
+}
+
+/* syntax highlight */
+.hljs-comment, .hljs-quote          { color: var(--val-text-faint) !important; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag,
+.hljs-built_in, .hljs-meta .hljs-keyword { color: var(--val-red) !important; }
+.hljs-string, .hljs-regexp,
+.hljs-template-string               { color: var(--val-teal) !important; }
+.hljs-number, .hljs-literal,
+.hljs-symbol                        { color: var(--val-yellow) !important; }
+.hljs-title, .hljs-title.function_,
+.hljs-section                       { color: var(--val-blue) !important; }
+.hljs-attr, .hljs-attribute,
+.hljs-variable, .hljs-property      { color: #ff8a94 !important; }
+.hljs-type, .hljs-class .hljs-title,
+.hljs-title.class_                  { color: var(--val-purple) !important; }
+.hljs-meta                          { color: var(--val-text-dim) !important; }
+
+.hljs-addition {
+  background: rgba(23, 230, 181, 0.15) !important;
+  color: var(--val-text-strong) !important;
+  display: inline-block;
+  width: 100%;
+}
+.hljs-deletion {
+  background: rgba(255, 70, 85, 0.18) !important;
+  color: var(--val-text-strong) !important;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ============================================================
+   9. MESSAGE BOX  →  cut-corner HUD panel
+   ============================================================ */
+[class*="channelTextArea_"] {
+  background: var(--val-bg-deep) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--val-border), inset 3px 0 0 var(--val-text-faint) !important;
+  clip-path: polygon(0 0, calc(100% - var(--val-cut)) 0, 100% var(--val-cut), 100% 100%, 0 100%);
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  transition: box-shadow 0.15s ease;
+}
+[class*="channelTextArea_"]:focus-within {
+  box-shadow: inset 0 0 0 1px var(--val-red), inset 3px 0 0 var(--val-red) !important;
+}
+[class*="channelTextArea_"] [class*="scrollableContainer_"] {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+[class*="channelTextArea_"] [class*="placeholder_"] {
+  color: var(--val-text-faint) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+}
+
+/* ============================================================
+   10. TYPING INDICATOR  →  uppercase red text
+   ============================================================ */
+[class*="typing_"] [class*="text_"] {
+  color: var(--val-red) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* ============================================================
+   11. POPOUT / MODAL / MENU / TOOLTIP
+   ============================================================ */
+[class*="menu_"],
+[class*="popout_"],
+[class*="userPopout"],
+[class*="userProfileOuter"],
+[class*="autocomplete_"],
+[class*="root_"][role="dialog"],
+[class*="modal_"] {
+  border: 1px solid var(--val-border) !important;
+  border-top: 2px solid var(--val-red) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* off-white tooltip like the in-game UI */
+[class*="tooltip_"] {
+  background: var(--val-text) !important;
+  color: var(--val-bg) !important;
+  border-radius: 0 !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
+}
+[class*="tooltip_"] * {
+  color: var(--val-bg) !important;
+}
+[class*="tooltipPointer_"] {
+  display: none;
+}
+
+/* menu items: solid red when focused */
+[class*="menu_"] [class*="item_"] {
+  border-radius: 0 !important;
+}
+[class*="menu_"] [class*="item_"][class*="focused_"] {
+  background: var(--val-red) !important;
+  color: var(--val-text-strong) !important;
+}
+[class*="menu_"] [class*="item_"][class*="focused_"] * {
+  color: var(--val-text-strong) !important;
+}
+[class*="menu_"] [class*="colorDanger_"] {
+  color: var(--val-red) !important;
+}
+[class*="menu_"] [class*="colorDanger_"][class*="focused_"] {
+  background: var(--val-red-active) !important;
+  color: var(--val-text-strong) !important;
+}
+
+/* ============================================================
+   12. EMBEDS / ATTACHMENTS
+   ============================================================ */
+article[class*="embedFull_"],
+[class*="embedFull_"] {
+  background: var(--val-bg-alt) !important;
+  border: 1px solid var(--val-border-dim);
+  border-radius: 0 !important;
+}
+[class*="attachment_"],
+[class*="wrapper_"][class*="file"] {
+  background: var(--val-bg-alt) !important;
+  border: 1px solid var(--val-border-dim) !important;
+  border-radius: 0 !important;
+}
+
+/* ============================================================
+   13. BADGES / BUTTONS  →  cut-corner uppercase buttons
+   ============================================================ */
+[class*="numberBadge_"],
+[class*="textBadge_"] {
+  background-color: var(--val-red) !important;
+  color: var(--val-text-strong) !important;
+  font-weight: 700;
+  border-radius: 2px !important;
+}
+
+[class*="lookFilled_"],
+button[class*="button_"][class*="sizeMedium_"],
+button[class*="button_"][class*="sizeLarge_"] {
+  border-radius: 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700 !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+}
+[class*="lookFilled_"][class*="colorBrand_"] {
+  background-color: var(--val-red) !important;
+  color: var(--val-text-strong) !important;
+}
+[class*="lookFilled_"][class*="colorBrand_"]:hover {
+  background-color: var(--val-red-hover) !important;
+}
+[class*="lookFilled_"][class*="colorGreen_"] {
+  background-color: var(--val-teal) !important;
+  color: var(--val-bg) !important;
+}
+[class*="lookFilled_"][class*="colorRed_"] {
+  background-color: var(--val-red) !important;
+  color: var(--val-text-strong) !important;
+}
+
+/* inputs */
+input[class*="input_"],
+[class*="inputWrapper_"] input,
+[class*="searchBar_"] {
+  border-radius: 0 !important;
+}
+
+/* ============================================================
+   14. SERVER LIST  →  red pill indicator
+   ============================================================ */
+[class*="guilds_"] [class*="pill_"] [class*="item_"] {
+  background-color: var(--val-red) !important;
+  border-radius: 0 !important;
+  width: 4px !important;
+}
+
+/* ============================================================
+   15. SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--val-border);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--val-red);
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
