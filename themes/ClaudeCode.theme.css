@@ -1,0 +1,548 @@
+/**
+ * @name Claude Code
+ * @description Claude Code CLI theme.
+ * @author tcoy
+ * @version 1.0.0
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap");
+
+/* ============================================================
+   1. SETTINGS — change colors and font here
+   ============================================================ */
+:root {
+  --cc-bg:          #141413; /* main terminal background */
+  --cc-bg-alt:      #1a1a19;
+  --cc-surface:     #1f1f1e;
+  --cc-surface-2:   #262624;
+  --cc-surface-3:   #30302e;
+  --cc-border:      #3d3d3a;
+  --cc-border-dim:  #2a2a28;
+
+  --cc-text:        #e8e6dc;
+  --cc-text-strong: #faf9f5;
+  --cc-text-dim:    #9c9a92;
+  --cc-text-faint:  #6b6a65;
+
+  --cc-claude:      #d77757; /* Claude orange */
+  --cc-claude-hsl:  15 61.5% 59.2%;
+  --cc-shimmer:     #eb9f7f;
+  --cc-claude-dim:  rgba(215, 119, 87, 0.14);
+  --cc-claude-dim2: rgba(215, 119, 87, 0.28);
+
+  --cc-success:     #4eba65;
+  --cc-error:       #ff6b80;
+  --cc-warning:     #ffc107;
+  --cc-permission:  #b1b9f9;
+  --cc-plan:        #48968c;
+  --cc-diff-add:    #225c2b;
+  --cc-diff-rem:    #7a2936;
+
+  --cc-font: "JetBrains Mono", "Cascadia Code", "Cascadia Mono", "Fira Code", Consolas, "Courier New", monospace;
+  --cc-radius: 6px;
+}
+
+/* ============================================================
+   2. DISCORD VARIABLES (legacy + visual refresh)
+   ============================================================ */
+:root,
+.theme-dark,
+.theme-darker,
+.theme-midnight,
+.theme-light,
+.visual-refresh {
+  /* fonts */
+  --font-primary: var(--cc-font) !important;
+  --font-display: var(--cc-font) !important;
+  --font-headline: var(--cc-font) !important;
+  --font-code: var(--cc-font) !important;
+
+  /* backgrounds (legacy) */
+  --background-primary: var(--cc-bg) !important;
+  --background-secondary: var(--cc-bg-alt) !important;
+  --background-secondary-alt: var(--cc-surface) !important;
+  --background-tertiary: var(--cc-bg) !important;
+  --background-accent: var(--cc-surface-3) !important;
+  --background-floating: var(--cc-surface) !important;
+  --background-nested-floating: var(--cc-surface-2) !important;
+  --background-mobile-primary: var(--cc-bg) !important;
+  --background-mobile-secondary: var(--cc-bg-alt) !important;
+  --background-modifier-hover: rgba(232, 230, 220, 0.04) !important;
+  --background-modifier-active: rgba(232, 230, 220, 0.07) !important;
+  --background-modifier-selected: var(--cc-claude-dim) !important;
+  --background-modifier-accent: var(--cc-border-dim) !important;
+  --background-message-hover: rgba(232, 230, 220, 0.025) !important;
+  --background-mentioned: rgba(215, 119, 87, 0.08) !important;
+  --background-mentioned-hover: rgba(215, 119, 87, 0.12) !important;
+  --channeltextarea-background: var(--cc-bg-alt) !important;
+  --deprecated-card-bg: var(--cc-surface) !important;
+  --deprecated-card-editable-bg: var(--cc-surface) !important;
+  --home-background: var(--cc-bg) !important;
+  --modal-background: var(--cc-surface) !important;
+  --modal-footer-background: var(--cc-bg-alt) !important;
+  --input-background: var(--cc-bg) !important;
+
+  /* backgrounds (visual refresh) */
+  --app-frame-background: var(--cc-bg) !important;
+  --app-frame-border: var(--cc-border-dim) !important;
+  --background-base-low: var(--cc-bg-alt) !important;
+  --background-base-lower: var(--cc-bg) !important;
+  --background-base-lowest: var(--cc-bg) !important;
+  --background-surface-high: var(--cc-surface) !important;
+  --background-surface-higher: var(--cc-surface-2) !important;
+  --background-surface-highest: var(--cc-surface-3) !important;
+  --background-mod-subtle: rgba(232, 230, 220, 0.04) !important;
+  --background-mod-normal: rgba(232, 230, 220, 0.07) !important;
+  --background-mod-strong: rgba(232, 230, 220, 0.1) !important;
+  --background-mod-muted: rgba(232, 230, 220, 0.03) !important;
+  --chat-background-default: var(--cc-bg) !important;
+  --bg-base-primary: var(--cc-bg) !important;
+  --bg-base-secondary: var(--cc-bg-alt) !important;
+  --bg-base-tertiary: var(--cc-bg) !important;
+  --bg-surface-raised: var(--cc-surface) !important;
+  --bg-surface-overlay: var(--cc-surface) !important;
+  --card-background-default: var(--cc-surface) !important;
+  --input-background-default: var(--cc-bg) !important;
+  --message-background-hover: rgba(232, 230, 220, 0.025) !important;
+  --message-highlight-background-default: rgba(215, 119, 87, 0.08) !important;
+  --message-highlight-background-hover: rgba(215, 119, 87, 0.12) !important;
+
+  /* borders */
+  --border-faint: var(--cc-border-dim) !important;
+  --border-subtle: var(--cc-border-dim) !important;
+  --border-normal: var(--cc-border) !important;
+  --border-strong: var(--cc-text-faint) !important;
+  --input-border-default: var(--cc-border) !important;
+
+  /* text */
+  --text-normal: var(--cc-text) !important;
+  --text-default: var(--cc-text) !important;
+  --text-strong: var(--cc-text-strong) !important;
+  --text-subtle: var(--cc-text-dim) !important;
+  --text-muted: var(--cc-text-faint) !important;
+  --text-link: var(--cc-shimmer) !important;
+  --text-brand: var(--cc-claude) !important;
+  --text-positive: var(--cc-success) !important;
+  --text-danger: var(--cc-error) !important;
+  --text-warning: var(--cc-warning) !important;
+  --text-feedback-positive: var(--cc-success) !important;
+  --text-feedback-critical: var(--cc-error) !important;
+  --text-feedback-warning: var(--cc-warning) !important;
+  --header-primary: var(--cc-text-strong) !important;
+  --header-secondary: var(--cc-text-dim) !important;
+  --chat-text-muted: var(--cc-text-faint) !important;
+  --channels-default: var(--cc-text-dim) !important;
+  --channel-icon: var(--cc-text-faint) !important;
+
+  /* icons / interactive */
+  --interactive-normal: var(--cc-text-dim) !important;
+  --interactive-hover: var(--cc-text) !important;
+  --interactive-active: var(--cc-text-strong) !important;
+  --interactive-muted: var(--cc-text-faint) !important;
+  --icon-default: var(--cc-text-dim) !important;
+  --icon-subtle: var(--cc-text-faint) !important;
+  --icon-muted: var(--cc-text-faint) !important;
+  --icon-strong: var(--cc-text-strong) !important;
+
+  /* brand color → Claude orange */
+  --brand-experiment: var(--cc-claude) !important;
+  --brand-experiment-500: var(--cc-claude) !important;
+  --brand-experiment-560: #c4684a !important;
+  --brand-experiment-600: #b05c40 !important;
+  --brand-500: var(--cc-claude) !important;
+  --brand-560: #c4684a !important;
+  --brand-600: #b05c40 !important;
+  --brand-500-hsl: var(--cc-claude-hsl) !important;
+  --brand-experiment-hsl: var(--cc-claude-hsl) !important;
+  --control-brand-foreground: var(--cc-claude) !important;
+  --control-brand-foreground-new: var(--cc-claude) !important;
+  --button-filled-brand-background: var(--cc-claude) !important;
+  --button-filled-brand-background-hover: #c4684a !important;
+  --button-filled-brand-background-active: #b05c40 !important;
+  --button-filled-brand-text: var(--cc-bg) !important;
+  --redesign-button-primary-background: var(--cc-claude) !important;
+  --redesign-button-primary-hover-background: #c4684a !important;
+  --redesign-button-primary-pressed-background: #b05c40 !important;
+  --redesign-button-primary-text: var(--cc-bg) !important;
+
+  /* mention */
+  --mention-foreground: var(--cc-claude) !important;
+  --mention-background: var(--cc-claude-dim) !important;
+  --info-warning-foreground: var(--cc-claude) !important;
+
+  /* menus */
+  --menu-item-default-hover-bg: var(--cc-claude-dim) !important;
+  --menu-item-default-active-bg: var(--cc-claude-dim2) !important;
+
+  /* status colors */
+  --status-positive: var(--cc-success) !important;
+  --status-positive-background: var(--cc-success) !important;
+  --status-danger: var(--cc-error) !important;
+  --status-danger-background: var(--cc-error) !important;
+  --status-warning: var(--cc-warning) !important;
+  --status-warning-background: var(--cc-warning) !important;
+  --status-online: var(--cc-success) !important;
+  --status-idle: var(--cc-warning) !important;
+  --status-dnd: var(--cc-error) !important;
+  --status-offline: var(--cc-text-faint) !important;
+
+  /* scrollbar */
+  --scrollbar-thin-thumb: var(--cc-border) !important;
+  --scrollbar-thin-track: transparent !important;
+  --scrollbar-auto-thumb: var(--cc-border) !important;
+  --scrollbar-auto-track: transparent !important;
+  --scrollbar-auto-scrollbar-color-thumb: var(--cc-border) !important;
+  --scrollbar-auto-scrollbar-color-track: transparent !important;
+}
+
+/* ============================================================
+   3. GENERAL
+   ============================================================ */
+body,
+button,
+input,
+textarea,
+select,
+[class*="markup_"] {
+  font-family: var(--cc-font) !important;
+  font-variant-ligatures: contextual;
+}
+
+::selection {
+  background: var(--cc-claude-dim2);
+  color: var(--cc-text-strong);
+}
+
+/* thin terminal-style lines between panels */
+[class*="sidebar_"] {
+  border-right: 1px solid var(--cc-border-dim);
+}
+section[class*="panels_"] {
+  border-top: 1px solid var(--cc-border-dim);
+  background: var(--cc-bg-alt) !important;
+}
+
+/* status dots (hardcoded colors in SVGs) */
+[fill="#23a55a"], [fill="#23A55A"] { fill: var(--cc-success) !important; }
+[fill="#f0b232"], [fill="#F0B232"] { fill: var(--cc-warning) !important; }
+[fill="#f23f43"], [fill="#F23F43"] { fill: var(--cc-error) !important; }
+[fill="#80848e"], [fill="#80848E"] { fill: var(--cc-text-faint) !important; }
+
+/* ============================================================
+   4. SERVER HEADER  →  "✻ Server Name"
+   ============================================================ */
+[class*="sidebar_"] header [class*="name_"]::before {
+  content: "✻ ";
+  color: var(--cc-claude);
+  animation: cc-pulse 2.4s ease-in-out infinite;
+}
+
+/* ============================================================
+   5. CHANNEL HEADER  →  "~/general"
+   ============================================================ */
+section[class*="title_"] [class*="children_"] > [class*="iconWrapper_"]:first-child {
+  display: none;
+}
+section[class*="title_"] [class*="titleWrapper_"] h1::before {
+  content: "~/";
+  color: var(--cc-text-faint);
+}
+
+/* ============================================================
+   6. CHANNEL LIST  →  "❯" on the selected channel
+   ============================================================ */
+[class*="containerDefault_"] [class*="modeSelected_"] [class*="name_"]::before {
+  content: "❯ ";
+  color: var(--cc-claude);
+  font-weight: 700;
+}
+[class*="containerDefault_"] [class*="modeSelected_"] [class*="link_"] {
+  background: var(--cc-claude-dim) !important;
+}
+
+/* ============================================================
+   7. MESSAGES
+   ============================================================ */
+[class*="headerText_"] [class*="username_"] {
+  font-weight: 700;
+}
+[class*="timestamp_"] {
+  color: var(--cc-text-faint) !important;
+  font-family: var(--cc-font) !important;
+}
+
+/* mentioned message: orange bar on the left */
+[class*="mentioned_"] {
+  background: rgba(215, 119, 87, 0.08) !important;
+}
+[class*="mentioned_"]::before {
+  background: var(--cc-claude) !important;
+}
+
+/* @mention */
+.mention,
+[class*="mention"][class*="wrapper_"] {
+  background: var(--cc-claude-dim) !important;
+  color: var(--cc-claude) !important;
+  border-radius: 3px;
+}
+.mention:hover,
+[class*="mention"][class*="wrapper_"]:hover {
+  background: var(--cc-claude) !important;
+  color: var(--cc-bg) !important;
+}
+
+/* reply spine */
+[class*="repliedMessage_"]::before {
+  border-color: var(--cc-border) !important;
+}
+
+/* blockquote */
+[class*="blockquoteDivider_"] {
+  background: var(--cc-text-faint) !important;
+}
+
+/* markdown headings */
+[class*="markup_"] h1,
+[class*="markup_"] h2,
+[class*="markup_"] h3 {
+  color: var(--cc-text-strong);
+}
+[class*="markup_"] h1::before { content: "# ";   color: var(--cc-claude); }
+[class*="markup_"] h2::before { content: "## ";  color: var(--cc-claude); }
+[class*="markup_"] h3::before { content: "### "; color: var(--cc-claude); }
+
+/* ============================================================
+   8. CODE
+   ============================================================ */
+[class*="markup_"] code.inline {
+  background: var(--cc-surface-2) !important;
+  color: var(--cc-permission) !important;
+  border: 1px solid var(--cc-border-dim);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+[class*="markup_"] pre {
+  border: 1px solid var(--cc-border) !important;
+  border-radius: var(--cc-radius) !important;
+  background: var(--cc-bg) !important;
+}
+[class*="markup_"] pre code,
+code.hljs {
+  background: var(--cc-bg) !important;
+  border: none !important;
+  color: var(--cc-text) !important;
+}
+
+/* syntax highlight */
+.hljs-comment, .hljs-quote          { color: var(--cc-text-faint) !important; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag,
+.hljs-built_in, .hljs-meta .hljs-keyword { color: var(--cc-claude) !important; }
+.hljs-string, .hljs-regexp,
+.hljs-template-string               { color: #8fbf7f !important; }
+.hljs-number, .hljs-literal,
+.hljs-symbol                        { color: #e5c07b !important; }
+.hljs-title, .hljs-title.function_,
+.hljs-section                       { color: var(--cc-permission) !important; }
+.hljs-attr, .hljs-attribute,
+.hljs-variable, .hljs-property      { color: var(--cc-shimmer) !important; }
+.hljs-type, .hljs-class .hljs-title,
+.hljs-title.class_                  { color: var(--cc-plan) !important; }
+.hljs-meta                          { color: var(--cc-text-dim) !important; }
+
+/* ```diff blocks styled like Claude Code diffs */
+.hljs-addition {
+  background: var(--cc-diff-add) !important;
+  color: var(--cc-text-strong) !important;
+  display: inline-block;
+  width: 100%;
+}
+.hljs-deletion {
+  background: var(--cc-diff-rem) !important;
+  color: var(--cc-text-strong) !important;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ============================================================
+   9. MESSAGE BOX  →  ╭─ ❯ ─╮ prompt box
+   ============================================================ */
+[class*="channelTextArea_"] {
+  background: var(--cc-bg-alt) !important;
+  border: 1px solid var(--cc-text-faint) !important;
+  border-radius: var(--cc-radius) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  transition: border-color 0.15s ease;
+}
+[class*="channelTextArea_"]:focus-within {
+  border-color: var(--cc-claude) !important;
+}
+[class*="channelTextArea_"] [class*="scrollableContainer_"] {
+  background: var(--cc-bg-alt) !important;
+  border-radius: var(--cc-radius) !important;
+}
+/* margin instead of padding: the placeholder is absolutely positioned and ignores padding */
+[class*="channelTextArea_"] [class*="textArea_"] {
+  position: relative;
+  margin-left: 2.4ch !important;
+}
+[class*="channelTextArea_"] [class*="textArea_"]::before {
+  content: "❯";
+  position: absolute;
+  left: -2ch;
+  top: calc(var(--custom-channel-textarea-text-area-height, 44px) / 2);
+  transform: translateY(-50%);
+  color: var(--cc-claude);
+  font-weight: 700;
+  pointer-events: none;
+}
+[class*="channelTextArea_"] [class*="placeholder_"] {
+  color: var(--cc-text-faint) !important;
+}
+
+/* ============================================================
+   10. TYPING INDICATOR  →  "✻ X is typing… (esc to interrupt)"
+   ============================================================ */
+[class*="typing_"] [class*="typingDots_"] svg,
+[class*="typing_"] [class*="ellipsis_"] {
+  display: none !important;
+}
+[class*="typing_"] [class*="typingDots_"]::before {
+  content: "✻";
+  display: inline-block;
+  width: 1.4ch;
+  color: var(--cc-claude);
+  animation: cc-spinner 1.2s steps(1) infinite;
+}
+[class*="typing_"] [class*="text_"] {
+  color: var(--cc-shimmer) !important;
+}
+[class*="typing_"] [class*="text_"]::after {
+  content: " (esc to interrupt)";
+  color: var(--cc-text-faint);
+}
+
+/* ============================================================
+   11. POPOUT / MODAL / MENU / TOOLTIP  →  rounded terminal boxes
+   ============================================================ */
+[class*="menu_"],
+[class*="tooltip_"],
+[class*="popout_"],
+[class*="userPopout"],
+[class*="userProfileOuter"],
+[class*="autocomplete_"],
+[class*="root_"][role="dialog"],
+[class*="modal_"] {
+  border: 1px solid var(--cc-border) !important;
+  border-radius: var(--cc-radius) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+[class*="tooltip_"] {
+  background: var(--cc-surface-2) !important;
+  color: var(--cc-text) !important;
+}
+[class*="tooltipPointer_"] {
+  display: none;
+}
+
+/* focused menu item is marked with "❯" */
+[class*="menu_"] [class*="item_"] {
+  position: relative;
+}
+[class*="menu_"] [class*="item_"][class*="focused_"] {
+  background: var(--cc-claude-dim) !important;
+  color: var(--cc-text-strong) !important;
+}
+[class*="menu_"] [class*="item_"][class*="focused_"]::before {
+  content: "❯";
+  position: absolute;
+  left: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cc-claude);
+  font-size: 11px;
+  font-weight: 700;
+}
+[class*="menu_"] [class*="colorDanger_"][class*="focused_"] {
+  background: rgba(255, 107, 128, 0.15) !important;
+  color: var(--cc-error) !important;
+}
+
+/* ============================================================
+   12. EMBEDS / ATTACHMENTS
+   ============================================================ */
+article[class*="embedFull_"],
+[class*="embedFull_"] {
+  background: var(--cc-bg-alt) !important;
+  border: 1px solid var(--cc-border-dim);
+  border-radius: var(--cc-radius) !important;
+}
+[class*="attachment_"],
+[class*="wrapper_"][class*="file"] {
+  background: var(--cc-bg-alt) !important;
+  border: 1px solid var(--cc-border-dim) !important;
+}
+
+/* ============================================================
+   13. BADGES / BUTTONS
+   ============================================================ */
+[class*="numberBadge_"],
+[class*="textBadge_"] {
+  background-color: var(--cc-claude) !important;
+  color: var(--cc-bg) !important;
+  font-weight: 700;
+}
+[class*="lookFilled_"][class*="colorBrand_"] {
+  background-color: var(--cc-claude) !important;
+  color: var(--cc-bg) !important;
+}
+[class*="lookFilled_"][class*="colorBrand_"]:hover {
+  background-color: #c4684a !important;
+}
+[class*="lookFilled_"][class*="colorGreen_"] {
+  background-color: var(--cc-success) !important;
+  color: var(--cc-bg) !important;
+}
+[class*="lookFilled_"][class*="colorRed_"] {
+  background-color: var(--cc-error) !important;
+  color: var(--cc-bg) !important;
+}
+
+/* ============================================================
+   14. SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cc-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cc-text-faint);
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ============================================================
+   15. ANIMATIONS
+   ============================================================ */
+@keyframes cc-spinner {
+  0%   { content: "·"; }
+  16%  { content: "✢"; }
+  33%  { content: "✳"; }
+  50%  { content: "✶"; }
+  66%  { content: "✻"; }
+  83%  { content: "✽"; }
+}
+
+@keyframes cc-pulse {
+  0%, 100% { color: var(--cc-claude); }
+  50%      { color: var(--cc-shimmer); }
+}
